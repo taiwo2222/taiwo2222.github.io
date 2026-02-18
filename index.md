@@ -1,260 +1,151 @@
-COBIT-Chain™
-Governance-First Operational Control Model for Regulated IT Environments
+# COBIT-Chain™
 
-Author: Taiwo Yusuf
-Framework Foundation: COBIT 2019
-Focus Areas: IT Governance, Asset Lifecycle Control, Digital Assurance, Clinical Trial Environments, GxP Compliance
+**Governance-first operational control model for regulated IT environments**
 
-Overview
+**Author:** Taiwo Yusuf  
+**Academic affiliation:** University of Wolverhampton (MBA)  
+**Framework foundation:** COBIT 2019  
+**Focus:** IT Governance - Asset lifecycle control - Digital assurance - GxP-aligned operations
 
-COBIT-Chain™ is a governance-first control model built on COBIT 2019 principles.
+---
 
-Rather than developing another software platform, the objective is to design practical, implementable control layers that strengthen accountability, traceability, and audit readiness within regulated IT operations.
+## What this is
 
-The model was validated through an applied prototype in a regulated pharmaceutical IT environment. The implementation focused on operational gaps that commonly exist between process ownership and system enforcement.
+COBIT-Chain™ is a COBIT-aligned governance model that turns everyday IT operations into measurable, time-bound controls.  
+The goal is not to build another platform. The goal is to design lightweight control layers that strengthen accountability, traceability, and audit readiness in regulated environments.
 
-The core idea is simple:
+This model was validated through an applied prototype in a regulated pharmaceutical IT setting. Organizational identifiers are intentionally excluded.
 
-Operational activity must be measurable, time-bound, and enforceable.
+---
 
-COBIT provides the governance structure.
-The application layer operationalizes it.
+## Why it was needed
 
-Problem Context
+In high-compliance environments, risk often shows up in small handoff gaps:
 
-In high-compliance environments, risk often emerges not from major system failures but from small transitional gaps:
+- Devices aging in stock until policy flags them
+- Shipping carts relying on informal ownership
+- Asset handoffs without timestamp evidence
+- SLA expectations without consistent enforcement
 
-Devices sitting idle beyond policy thresholds
+COBIT defines governance expectations. The applied control layer makes them practical in daily operations.
 
-Shipment staging without structured ownership
+---
 
-Asset hand-offs without timestamp evidence
+## Applied operational governance modules
 
-SLA expectations without enforcement logic
+### 1) Transitional asset custody control
+A structured handoff record whenever custody changes, capturing:
+- sender and receiver accountability
+- timestamped confirmation
+- status progression
+- traceable linkage to operational work
 
-Detection mechanisms may exist, but structured follow-through is often inconsistent.
+**Outcome**
+- stronger chain-of-custody evidence
+- fewer disputes and “who had it last” gaps
+- improved audit traceability
 
-COBIT defines what good governance looks like.
-The application model enforces it in day-to-day operations.
+**COBIT alignment**
+- BAI09 - Manage Assets  
+- DSS01 - Manage Operations  
+- DSS02 - Manage Service Requests and Incidents  
+- MEA02 - Monitor, Evaluate and Assess Internal Control  
 
-Applied Operational Governance Modules
-1. Transitional Asset Custody Control
+---
 
-This module formalizes device and request hand-offs.
+### 2) FedEx cart governance control
+This module turns shipping dispatch into a controlled, time-bound process.
 
-When custody changes, the system requires:
+**How it works**
+- weekly rotation assigns a clear owner
+- device staged triggers status = Pending FedEx Dispatch
+- SLA deadline is set automatically to 4:45 PM
+- 4:40 PM reminder if anything is still pending
+- 4:45 PM confirmation logs timestamp and closes the loop
+- 4:46 PM missed SLA triggers automatic escalation and exception logging
 
-Defined sender and receiver
+**Outcome**
+- clear ownership and cutoff time
+- reminders before breach, escalation only when needed
+- timestamps as basic evidence trail
 
-Timestamp recording
+**COBIT alignment**
+- DSS01 - Manage Operations  
+- APO12 - Manage Risk  
+- MEA02 - Monitor, Evaluate and Assess Internal Control  
 
-Status update
+---
 
-Accountable owner
+### 3) TechBar device aging and FIFO control
+Intune flags idle devices at day 60. This module adds early governance enforcement.
 
-Traceable record linkage
+**How it works**
+- reminders start 10 days before the 60-day threshold
+- reminders continue until devices are remediated and records updated
+- remediation path: reimage or replace with already-imaged units
+- FIFO logic prioritizes older stock first
 
-This strengthens:
+**Outcome**
+- fewer devices drifting into non-compliant state
+- improved inventory rotation and throughput
+- stronger alignment between endpoint policy and operations
 
-Asset lifecycle integrity
+**COBIT alignment**
+- BAI09 - Manage Assets  
+- DSS01 - Manage Operations  
+- DSS03 - Manage Problems  
+- MEA02 - Monitor, Evaluate and Assess Internal Control  
 
-Audit traceability
+---
 
-Operational accountability
+## Governance analytics layer (Power BI)
 
-Risk reduction during transitions
+Power BI was used as the assurance and visibility layer to monitor:
+- SLA compliance rates (shipping and dispatch)
+- aging buckets (0-30, 30-60, 60+)
+- approaching-threshold inventory
+- turnaround time from reminder to remediation
+- exception frequency trends over time
 
-COBIT alignment:
+This turns operational activity into measurable control performance.
 
-BAI09 - Manage Assets
+**COBIT alignment**
+- MEA02 - Monitor, Evaluate and Assess Internal Control  
+- EDM03 - Ensure Risk Optimization (governance oversight of risk exposure)  
 
-DSS01 - Manage Operations
+---
 
-DSS02 - Manage Service Requests and Incidents
-
-MEA02 - Monitor, Evaluate and Assess Internal Control
-
-2. FedEx Cart Governance Control
-Problem
-
-Devices staged for shipment were dependent on informal ownership.
-Deadlines were assumed.
-Escalations occurred reactively.
-
-Control Design
-
-A structured weekly rotation assigns clear accountability.
-
-When a device is placed in the FedEx cart:
-
-The system identifies the assigned owner
-
-Status becomes Pending FedEx Dispatch
-
-SLA deadline is set automatically to 4:45 PM
-
-No manual deadline entry
-
-At 4:40 PM, if items remain pending, a reminder is sent.
-
-At 4:45 PM:
-
-Confirmation records timestamp
-
-SLA marked as Met
-
-After 4:45 PM:
-
-SLA marked as Missed
-
-Supervisor notified
-
-Impacted devices logged
-
-This converts an informal routine into a measurable operational control.
-
-COBIT alignment:
-
-DSS01 - Manage Operations
-
-APO12 - Manage Risk
-
-MEA02 - Internal Control Monitoring
-
-3. TechBar Device Aging and FIFO Control
-Problem
-
-Intune flags devices at 60 days of inactivity.
-However, detection alone does not ensure timely remediation.
-
-Without structured reminders and accountability:
-
-Devices remain idle
-
-Security posture weakens
-
-Inventory stagnates
-
-Control Enhancement
-
-The application introduces early governance intervention.
-
-Ten days before the 60-day threshold:
-
-The Team Lead begins receiving reminders
-
-Reminders continue daily until remediation is recorded
-
-At day 60:
-
-Intune flags the device
-
-Device is reimaged or replaced
-
-Record must be updated before reminders stop
-
-This enforces First In First Out discipline and prevents silent aging.
-
-COBIT alignment:
-
-BAI09 - Asset lifecycle governance
-
-DSS01 - Operational control
-
-DSS03 - Problem trend analysis
-
-MEA02 - Control effectiveness monitoring
-
-Governance Analytics Layer - Power BI
-
-Operational data feeds into a governance reporting layer.
-
-Power BI was used to monitor:
-
-SLA compliance rates
-
-Shipping dispatch performance
-
-Aging buckets - 0 to 30, 30 to 60, 60 plus
-
-Devices approaching 60-day threshold
-
-Remediation turnaround time
-
-Exception frequency trends
-
-This provides measurable evidence of control performance.
-
-Under COBIT, this aligns directly with:
-
-MEA02 - Monitor, Evaluate and Assess the System of Internal Control
-
-EDM03 - Ensure Risk Optimization
-
-Analytics transforms activity into assurance.
-
-Control Philosophy
-
-This model is built on three principles:
-
-Early visibility before compliance breach
-
-System-enforced accountability, not manual follow-up
-
-Measurable governance through analytics
-
-The objective is not automation for its own sake.
-It is governance maturity through structured operational enforcement.
-
-Implementation Stack
+## Implementation approach
 
 Prototype implementation leveraged:
+- Microsoft Power Platform (workflow and control screens)
+- SharePoint lists (structured control records)
+- Intune (endpoint state flags)
+- Power BI (governance analytics)
+- ServiceNow alignment (operational workflow reference)
 
-Microsoft Power Platform
+The emphasis was governance enforcement and evidence capture, not system complexity.
 
-SharePoint structured lists
+---
 
-Intune policy flags
+## Architecture diagram
 
-Power BI reporting layer
+```mermaid
+flowchart TB
+  A[COBIT 2019 Governance Framework<br/>EDM - APO - BAI - DSS - MEA]
+  B[Operational Control Modules]
+  C1[Asset Custody Control]
+  C2[FedEx Cart SLA Control]
+  C3[Device Aging and FIFO Control]
+  D[Application Layer<br/>Power Platform - SharePoint - Intune]
+  E[Assurance Layer<br/>Power BI Monitoring and Reporting]
+  A --> B
+  B --> C1
+  B --> C2
+  B --> C3
+  C1 --> D
+  C2 --> D
+  C3 --> D
+  D --> E
+  E --> A
 
-ServiceNow process alignment
-
-The focus was governance integration, not software complexity.
-
-COBIT as the Governing Framework
-
-COBIT 2019 provides the governance backbone.
-
-This applied model demonstrates how COBIT domains can be translated into lightweight, enforceable operational controls rather than remaining theoretical.
-
-Primary domains activated:
-
-EDM - Governance oversight
-
-APO - Risk management
-
-BAI - Asset and configuration governance
-
-DSS - Operational control enforcement
-
-MEA - Assurance and monitoring
-
-COBIT defines the structure.
-The governance application enforces it at the operational level.
-
-Research Direction
-
-COBIT-Chain™ extends beyond IT operations.
-
-The long-term objective is to apply governance-first control layers to:
-
-Clinical trial data workflows
-
-eConsent integrity
-
-Digital assurance environments
-
-Regulated health systems
-
-This work bridges governance theory and operational enforcement.
